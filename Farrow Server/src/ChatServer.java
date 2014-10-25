@@ -36,12 +36,12 @@ public class ChatServer {
      * so that we can check that new clients are not registering name
      * already in use.
      */
+    
 
     /**
      * The set of all the print writers for all the clients.  This
      * set is kept so we can easily broadcast messages.
      */
-   
     
     /**
      * The application main method, which just listens on a port and
@@ -138,6 +138,8 @@ public class ChatServer {
             } catch (IOException e) {
                 System.out.println(e);
             } finally {
+                // This client is going down!  Remove its name and its print
+                // writer from the sets, and close its socket.
                 try {
                     socket.close();
                 } catch (IOException e) {
