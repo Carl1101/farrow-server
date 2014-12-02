@@ -90,16 +90,17 @@ public class ChatServer {
                 // Create character streams for the socket.
                 in = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
+                
                 out = new PrintWriter(socket.getOutputStream(), true);
 
                 // Request a name from this client.  Keep requesting until
                 // a name is submitted that is not already used.  Note that
                 // checking for the existence of a name and adding the name
                 // must be done while locking the set of names.
-                System.out.println(in.readLine());
                 while (true) {
-                    System.out.println(in.readLine());
-                    
+                	String message = in.readLine();
+                    System.out.println(message);
+                    out.println(message);
 //                    out.println("LOGINUSERNAME");
 //                    String name = in.readLine();
 //                    out.println("LOGINPASSWORD");
